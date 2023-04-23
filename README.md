@@ -1,0 +1,1 @@
+# SinglePage_MasterDetails_inCoreMVC
