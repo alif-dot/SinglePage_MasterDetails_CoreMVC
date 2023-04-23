@@ -1,0 +1,129 @@
+﻿@model SinglePage_MasterDetails.ViewModel.VmSale
+@{
+
+    ViewData["Title"] = "Single";
+    var listsm = ViewData["list"] as List<SinglePage_MasterDetails.Models.SaleMaster>;
+    var btn = Model.SaleId > 0 ? "Update" : "Add";
+    var bc = Model.SaleId > 0 ? "btn btn-primary" : "btn btn-success";
+    var i = 0;
+}
+<h2 style="text-align:center;">Single Page Master Details</h2>
+
+<form asp-action="Single" asp-controller="Sale" method="post">
+
+    <input type="hidden" asp-for="SaleId" />
+
+    <div>
+        CreateDate <br />
+        <input type="date" asp-for="CreateDate" />
+    </div>
+
+    <div>
+        CustomerName <br />
+        <input type="text" asp-for="CustomerName" />
+    </div>
+
+    <div>
+        CustomerAddress <br />
+        <input type="text" asp-for="CustomerAddress" />
+    </div>
+
+    <div>
+        <label asp-for="Gender"></label>
+        <br />
+        <input type="radio" asp-for="Gender" name="Gender" value="Male" checked="@Model.Gender == " Male"" />
+        <label asp-for="Gender" class="form-check-label">Male</label>
+        <br />
+        <input type="radio" asp-for="Gender" name="Gender" value="Female" checked="@Model.Gender == " Female"" />
+        <label asp-for="Gender" class="form-check-label">Female</label>
+    </div>
+
+    @await Html.PartialAsync("_ValidationScriptsPartial", Model)
+
+    <table>
+        <thead>
+            <tr>
+                <td>ProductName</td>
+                <td>Price</td>
+                <td>Qty</td>
+                <td><button type="button" onclick="AddItem()">Add More</button></td>
+            </tr>
+        </thead>
+        <tbody id="tSD">
+            @foreach (var item in Model.SaleDetails)
+            {
+                i++;
+                <tr id="tr_@i">
+                    <td><input type="text" id="ProductName_@i" name="ProductName" value="@item.ProductName" /></td>
+                    <td><input type="number" id="Price_@i" name="Price" value="@item.Price" /></td>
+                    <td><input type="number" id="Qty_@i" name="Qty" value="@item.Qty" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+    </div>
+    <div>
+        <button type="submit" class="@bc">@btn</button>
+        <a asp-action="Single" class="btn btn-info">Reset</a>
+    </div>
+
+</form>
+
+@{
+
+}
+
+@await Html.PartialAsync("_PartialView", Model)
+
+
+<script>
+
+    //Ajax JQuery for GET method
+
+    $(document).ready(function () {
+        $("#load-page").click(function () {
+            $.ajax({
+                url: "/Home/Single",
+                type: "GET",
+                dataType: "html",
+                success: function (result) {
+                    $("#page-content").html(result);
+                },
+                error: function () {
+                    alert("An error occurred while loading the page.");
+                }
+            });
+        });
+    });
+
+    //Ajax JQuery for POST method
+
+    $(document).ready(function () {
+        $("#my-form").submit(function (event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                url: "/Home/Single",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: function (result) {
+                    $("#result").html("CustomerName: " + result.name + "<br>Gender: " + result.gender);
+                },
+                error: function () {
+                    alert("An error occurred while submitting the data.");
+                }
+            });
+        });
+    });
+
+    var i = @i;
+    function AddItem() {
+        i += 1;
+        var Trs = '<tr id="tr_' + i + '"><td><input type="text" id = "ProductName_' + i + '" name = "ProductName" value = "0"/></td>' + '<td><input type="number" id = "Price_' + i + '" name = "Price" value = "0"/></td>' + '<td><input type="number" id="Qty_@i" name="Qty"/></td>' + '</tr>';
+        document.getElementById('tSD').innerHTML += Trs;
+    }
+
+
+</script>

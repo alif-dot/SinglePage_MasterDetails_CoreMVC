@@ -1,0 +1,30 @@
+﻿@model SinglePage_MasterDetails.ViewModel.VmSale
+@{
+    var index = 0;
+    var listsm = ViewData["list"] as List<SinglePage_MasterDetails.Models.SaleMaster>;
+
+}
+
+<table class="table table-striped">
+    <tr>
+
+        <th>Date & Time</th>
+        <th>Customer Name</th>
+        <th>Address</th>
+        <th>Gender</th>
+        <th>#####</th>
+        <th>#####</th>
+    </tr>
+    @foreach (var item in listsm)
+    {
+        <tr>
+            <td>@item.CreateDate</td>
+            <td>@item.CustomerName</td>
+            <td>@item.CustomerAddress</td>
+            <td>@item.Gender</td>
+            <td><a asp-action="Single" asp-route-id="@item.SaleId">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="@item.SaleId">Delete</a></td>
+        </tr>
+
+    }
+</table>
