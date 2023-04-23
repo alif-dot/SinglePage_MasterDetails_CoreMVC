@@ -8,15 +8,15 @@ The application uses Entity Framework Core to interact with the database, which 
 
 The main features of the application include:
 
-Displaying a list of items on the master page
+1.  Displaying a list of items on the master page
 
-Displaying the details of a selected item on the details page
+2. Displaying the details of a selected item on the details page
 
-Creating a new item
+3. Creating a new item
 
-Updating an existing item
+4. Updating an existing item
 
-Deleting an item
+5. Deleting an item
 
 The application is designed to be easy to use and user-friendly. The code is well-organized and follows best practices for ASP.NET Core MVC development. It also includes comments and documentation to make it easier for other developers to understand and modify the code.
 
