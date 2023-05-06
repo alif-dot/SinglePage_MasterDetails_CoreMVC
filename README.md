@@ -1,4 +1,8 @@
-# SinglePage_MasterDetails_inCoreMVC
+# SinglePageMasterDetails_CoreMVC
+![Screenshot of Single - SinglePage_MasterDetails](https://user-images.githubusercontent.com/62230465/236639274-2f9ebf8e-83f1-4cf9-9ef9-1b298ebb3cc7.jpg)
+![Screenshot2 of Single - SinglePage_MasterDetails](https://user-images.githubusercontent.com/62230465/236639288-fdd9aef3-ce90-4b84-abc1-218d34f511b8.jpg)
+![sc1](https://user-images.githubusercontent.com/62230465/236639217-fb2e3f65-51ff-473f-af8f-8baca500b04c.png)
+![sc2](https://user-images.githubusercontent.com/62230465/236639219-04aa825b-5223-439e-aee5-65b676fdbb00.png)
 
 Single Page Master Details CRUD in ASP.NET Core MVC is a web application that allows the user to perform CRUD (Create, Read, Update, Delete) operations using a single page interface. This application is built using ASP.NET Core MVC, C#, HTML, CSS, and JavaScript.
 
